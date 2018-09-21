@@ -79,7 +79,7 @@ public class Scratch extends Sprite {
 	public static var app:Scratch; // static reference to the app, used for debugging
 
 	// Display modes
-    public var projectDataUrl:String = '';
+    public var projectDataUrl:String = ''; //
 	public var hostProtocol:String = 'http';
 	public var editMode:Boolean; // true when project editor showing, false when only the player is showing
 	public var isOffline:Boolean; // true when running as an offline (i.e. stand-alone) app
