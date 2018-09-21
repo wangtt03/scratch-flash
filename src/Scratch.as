@@ -240,8 +240,8 @@ public class Scratch extends Sprite {
             _loc4_.fetchOldProjectURL(projectDataUrl);
 		} else {
 			setupExternalInterface(false);
-			jsEditorReady();
 		}
+		jsEditorReady();
 
 	}
 

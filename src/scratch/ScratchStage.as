@@ -43,6 +43,7 @@ import util.*;
 import watchers.*;
 import assets.Resources;
 import by.blooddy.crypto.image.PNG24Encoder;
+import by.blooddy.crypto.image.JPEGEncoder;
 import by.blooddy.crypto.image.PNGFilter;
 import by.blooddy.crypto.MD5;
 
@@ -321,7 +322,7 @@ public class ScratchStage extends ScratchObj {
 	public function stemSaveScreenshot():void {
 		var bitmapData:BitmapData = new BitmapData(STAGEW, STAGEH, true, 0);
 		bitmapData.draw(this);
-		var pngData:ByteArray = PNG24Encoder.encode(bitmapData, PNGFilter.PAETH);
+		var pngData:ByteArray = JPEGEncoder.encode(bitmapData, 50);
 		try {
 			ExternalInterface.call.apply(ExternalInterface, ["onScratch2Screenshot", Base64Encoder.encode(pngData)]);
 		} catch (e:Error) {

@@ -334,7 +334,8 @@ public class Server implements IServer {
 	public function getSelectedLang(whenDone:Function):void {
 		// Get the language setting.
 		var sharedObj:SharedObject = SharedObject.getLocal('Scratch');
-		if (sharedObj.data.lang) whenDone(sharedObj.data.lang);
+		// if (sharedObj.data.lang) whenDone(sharedObj.data.lang);
+		whenDone('zh-cn');
 	}
 
 	public function setSelectedLang(lang:String):void {
