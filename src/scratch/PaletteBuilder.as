@@ -150,10 +150,10 @@ public class PaletteBuilder {
 	protected function addExtensionButtons():void {
 		addAddExtensionButton();
 		if (Scratch.app.isExtensionDevMode) {
-			var extensionDevManager:ExtensionDevManager = Scratch.app.extensionManager as ExtensionDevManager;
-			if (extensionDevManager) {
-				addItem(extensionDevManager.makeLoadExperimentalExtensionButton());
-			}
+			// var extensionDevManager:ExtensionDevManager = Scratch.app.extensionManager as ExtensionDevManager;
+			// if (extensionDevManager) {
+			// 	addItem(extensionDevManager.makeLoadExperimentalExtensionButton());
+			// }
 		}
 	}
 

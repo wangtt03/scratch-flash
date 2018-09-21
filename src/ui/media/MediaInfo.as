@@ -56,6 +56,7 @@ public class MediaInfo extends Sprite {
 	public var objWidth:int = 0;
 	public var bitmapResolution:int = 1;
 	public var md5:String;
+	public var json:Object;
 
 	public var owner:ScratchObj; // object owning a sound or costume in MediaPane; null for other cases
 	public var isBackdrop:Boolean;
@@ -99,6 +100,7 @@ public class MediaInfo extends Sprite {
 			objWidth = obj.width ? obj.width : 0;
 			bitmapResolution = obj.bitmapResolution ? obj.bitmapResolution : 1;
 			scripts = obj.scripts;
+			json = obj.json;
 			md5 = ('script' != objType) ? obj.md5 : null;
 		}
 		addFrame();

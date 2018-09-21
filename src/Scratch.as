@@ -79,6 +79,7 @@ public class Scratch extends Sprite {
 	public static var app:Scratch; // static reference to the app, used for debugging
 
 	// Display modes
+    public var projectDataUrl:String = '';
 	public var hostProtocol:String = 'http';
 	public var editMode:Boolean; // true when project editor showing, false when only the player is showing
 	public var isOffline:Boolean; // true when running as an offline (i.e. stand-alone) app
@@ -225,8 +226,23 @@ public class Scratch extends Sprite {
 	}
 
 	protected function handleStartupParameters():void {
-		setupExternalInterface(false);
-		jsEditorReady();
+		projectDataUrl = loaderInfo.parameters["projectDataUrl"];
+		var _loc3_:String = loaderInfo.parameters["autostart"];
+		var _loc4_:ProjectIO = new ProjectIO(this);
+		
+		if (projectDataUrl) {
+			autostart = true;
+            if(_loc3_ != null)
+            {
+               autostart = _loc3_.toLowerCase() == "true";
+            }
+            setupExternalInterface(true);
+            _loc4_.fetchOldProjectURL(projectDataUrl);
+		} else {
+			setupExternalInterface(false);
+			jsEditorReady();
+		}
+
 	}
 
 	protected function setupExternalInterface(oldWebsitePlayer:Boolean):void {
@@ -236,6 +252,7 @@ public class Scratch extends Sprite {
 		addExternalCallback('ASextensionCallDone', extensionManager.callCompleted);
 		addExternalCallback('ASextensionReporterDone', extensionManager.reporterCompleted);
 		addExternalCallback('AScreateNewProject', createNewProjectScratchX);
+		addExternalCallback('AScreateSaveProject', saveProjectScratchX);
 
 		if (isExtensionDevMode) {
 			addExternalCallback('ASloadGithubURL', loadGithubURL);
@@ -1194,6 +1211,29 @@ public class Scratch extends Sprite {
 		d.addButton('Don\'t save', proceedWithoutSaving);
 		d.addButton('Cancel', cancel);
 		d.showOnStage(stage);
+	}
+
+	public function saveProjectScratchX():void {
+		function squeakSoundsConverted():void {
+			scriptsPane.saveScripts(false);
+			var projectType:String = extensionManager.hasExperimentalExtensions() ? '.sbx' : '.sb2';
+			var defaultName:String = StringUtil.trim(projectName());
+			defaultName = ((defaultName.length > 0) ? defaultName : 'project') + projectType;
+			var zipData:ByteArray = projIO.encodeProjectAsZipFile(stagePane);
+			externalCall('saveSb2ProjectToCloud', function (success:Boolean):void {
+			}, Base64Encoder.encode(zipData));
+		}
+
+		function fileSaved(e:Event):void {
+			if (isExtensionDevMode) {
+				// Some versions of the editor think of this as an "export" and some think of it as a "save"
+				saveNeeded = false;
+			}
+		}
+
+		if (loadInProgress) return;
+		var projIO:ProjectIO = new ProjectIO(this);
+		projIO.convertSqueakSounds(stagePane, squeakSoundsConverted);
 	}
 
 	public function exportProjectToFile(fromJS:Boolean = false, saveCallback:Function = null):void {

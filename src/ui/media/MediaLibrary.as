@@ -427,8 +427,8 @@ spriteFeaturesFilter.visible = false; // disable features filter for now
 				var obj:Object = null;
 				if (assetType == 'extension') {
 					whenDone(item.dbObj.extension);
-				} else if (md5AndExt.slice(-5) == '.json') {
-					io.fetchSprite(md5AndExt, whenDone);
+				} else if (assetType == 'sprite') {
+					io.fetchSprite(item.dbObj.json, whenDone);
 				} else if (assetType == 'sound') {
 					io.fetchSound(md5AndExt, item.dbObj.name, whenDone);
 				} else if (assetType == 'costume') {

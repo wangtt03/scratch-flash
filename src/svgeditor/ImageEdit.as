@@ -148,7 +148,7 @@ public class ImageEdit extends Sprite {
 			if (item.mycostume) insertCostume(item.mycostume);
 			else if (item.mysprite) insertSprite(item.mysprite);
 			else if ('image' == item.objType) projIO.fetchImage(item.md5, item.objName, item.objWidth, insertCostume);
-			else if ('sprite' == item.objType) projIO.fetchSprite(item.md5, insertSprite);
+			else if ('sprite' == item.objType) projIO.fetchSprite(item.json, insertSprite);
 			return true;
 		}
 		return false;

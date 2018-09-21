@@ -30,6 +30,8 @@ package util {
 import flash.display.*;
 import flash.events.*;
 import flash.net.URLLoader;
+import flash.net.URLLoaderDataFormat;
+import flash.net.URLRequest;
 import flash.utils.*;
 
 import logging.LogLevel;
@@ -91,6 +93,49 @@ public class ProjectIO {
 		proj.clearPenLayer();
 		return zip.endWrite();
 	}
+
+	public function fetchOldProjectURL(param1:String) : void {
+         var progressHandler:Function = null;
+         var completeHandler:Function = null;
+         var loader:URLLoader = null;
+         var url:String = param1;
+         progressHandler = function(param1:ProgressEvent):void
+         {
+            if(!app.lp)
+            {
+               app.addLoadProgressBox("Loading project...");
+            }
+            app.lp.setProgress(param1.bytesLoaded / param1.bytesTotal);
+            app.lp.setInfo(param1.bytesLoaded + " " + Translator.map("of") + " " + param1.bytesTotal + " " + Translator.map("bytes loaded"));
+         };
+         completeHandler = function(param1:Event):void
+         {
+            app.lp.setTitle("Installing...");
+            app.oldWebsiteURL = url;
+            app.runtime.installProjectFromData(loader.data);
+         };
+         app.runtime.stopAll();
+         app.runtime.installEmptyProject();
+         loader = new URLLoader();
+         loader.dataFormat = URLLoaderDataFormat.BINARY;
+         loader.addEventListener(ProgressEvent.PROGRESS,progressHandler);
+         loader.addEventListener(Event.COMPLETE,completeHandler);
+         loader.addEventListener(SecurityErrorEvent.SECURITY_ERROR,app.runtime.projectLoadFailed);
+         loader.addEventListener(IOErrorEvent.IO_ERROR,app.runtime.projectLoadFailed);
+         app.addLoadProgressBox("Loading project...");
+         app.loadInProgress = true;
+         try
+         {
+            loader.load(new URLRequest(url));
+            return;
+         }
+         catch(error:*)
+         {
+            app.runtime.projectLoadFailed();
+            loader = null;
+            return;
+         }
+    }
 
 	public function encodeSpriteAsZipFile(spr:ScratchSprite):ByteArray {
 		// Encode a sprite into a ByteArray. The format is a ZIP file containing
@@ -469,7 +514,7 @@ public class ProjectIO {
 	// Download a sprite from the server
 	//----------------------------
 
-	public function fetchSprite(md5AndExt:String, whenDone:Function):void {
+	public function fetchSprite(md5AndExt:Object, whenDone:Function):void {
 		// Fetch a sprite with the md5 hash.
 		function jsonReceived(data:ByteArray):void {
 			if (!data) return;
@@ -487,7 +532,10 @@ public class ProjectIO {
 			whenDone(spr);
 		}
 		var spr:ScratchSprite = new ScratchSprite();
-		app.server.getAsset(md5AndExt, jsonReceived);
+		spr.readJSON(md5AndExt);
+		spr.instantiateFromJSON(app.stagePane);
+		fetchSpriteAssets([spr], assetsReceived);
+		// app.server.getAsset(md5AndExt, jsonReceived);
 	}
 
 	private function fetchSpriteAssets(objList:Array, whenDone:Function):void {

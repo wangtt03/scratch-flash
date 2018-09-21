@@ -55,7 +55,7 @@ public class TopBarPart extends UIPart {
 	private var offlineNotice:TextField;
 	private const offlineNoticeFormat:TextFormat = new TextFormat(CSS.font, 13, CSS.white, true);
 
-	protected var loadExperimentalButton:Button;
+	// protected var loadExperimentalButton:Button;
 	protected var exportButton:Button;
 	protected var extensionLabel:TextField;
 
@@ -81,10 +81,10 @@ public class TopBarPart extends UIPart {
 			addChild(exportButton = new Button('Save Project', function():void { app.exportProjectToFile(); }));
 			addChild(extensionLabel = makeLabel('My Extension', offlineNoticeFormat, 2, 2));
 
-			var extensionDevManager:ExtensionDevManager = Scratch.app.extensionManager as ExtensionDevManager;
-			if (extensionDevManager) {
-				addChild(loadExperimentalButton = extensionDevManager.makeLoadExperimentalExtensionButton());
-			}
+			// var extensionDevManager:ExtensionDevManager = Scratch.app.extensionManager as ExtensionDevManager;
+			// if (extensionDevManager) {
+			// 	addChild(loadExperimentalButton = extensionDevManager.makeLoadExperimentalExtensionButton());
+			// }
 		}
 	}
 
@@ -167,11 +167,11 @@ public class TopBarPart extends UIPart {
 		// From here down, nextX is the next item's right edge and decreases after each item
 		nextX = w - 5;
 
-		if (loadExperimentalButton) {
-			loadExperimentalButton.x = nextX - loadExperimentalButton.width;
-			loadExperimentalButton.y = h + 5;
-			// Don't upload nextX: we overlap with other items. At most one set should show at a time.
-		}
+		// if (loadExperimentalButton) {
+		// 	loadExperimentalButton.x = nextX - loadExperimentalButton.width;
+		// 	loadExperimentalButton.y = h + 5;
+		// 	// Don't upload nextX: we overlap with other items. At most one set should show at a time.
+		// }
 
 		if (exportButton) {
 			exportButton.x = nextX - exportButton.width;
@@ -195,7 +195,7 @@ public class TopBarPart extends UIPart {
 			var hasExperimental:Boolean = app.extensionManager.hasExperimentalExtensions();
 			exportButton.visible = hasExperimental;
 			extensionLabel.visible = hasExperimental;
-			loadExperimentalButton.visible = !hasExperimental;
+			// loadExperimentalButton.visible = !hasExperimental;
 
 			var extensionDevManager:ExtensionDevManager = app.extensionManager as ExtensionDevManager;
 			if (extensionDevManager) {

@@ -26,6 +26,7 @@ package scratch {
 import blocks.BlockArg;
 
 import flash.display.*;
+import flash.external.ExternalInterface;
 import flash.geom.*;
 import flash.media.*;
 import flash.events.*;
@@ -86,6 +87,8 @@ public class ScratchStage extends ScratchObj {
 		addPenLayer();
 		initMedia();
 		showCostume(0);
+
+		ExternalInterface.addCallback("ASgetScreenShot", stemSaveScreenshot);
 	}
 
 	public function setTempo(bpm:Number):void {
@@ -313,6 +316,16 @@ public class ScratchStage extends ScratchObj {
 		var pngData:ByteArray = PNG24Encoder.encode(bitmapData, PNGFilter.PAETH);
 		var file:FileReference = new FileReference();
 		file.save(pngData, 'stage.png');
+	}
+
+	public function stemSaveScreenshot():void {
+		var bitmapData:BitmapData = new BitmapData(STAGEW, STAGEH, true, 0);
+		bitmapData.draw(this);
+		var pngData:ByteArray = PNG24Encoder.encode(bitmapData, PNGFilter.PAETH);
+		try {
+			ExternalInterface.call.apply(ExternalInterface, ["onScratch2Screenshot", Base64Encoder.encode(pngData)]);
+		} catch (e:Error) {
+		}
 	}
 
 	/* Scrolling support */

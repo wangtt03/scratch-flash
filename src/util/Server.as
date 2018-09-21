@@ -263,7 +263,7 @@ public class Server implements IServer {
 //			whenDone(BackpackPart.localAssets[md5]);
 //			return null;
 //		}
-		var url:String = URLs.assetCdnPrefix + URLs.internalAPI + 'asset/' + md5 + '/get/';
+		var url:String = URLs.assetCdnPrefix + URLs.staticFiles + 'library/' + md5;
 		return serverGet(url, whenDone);
 	}
 
@@ -315,7 +315,7 @@ public class Server implements IServer {
 	}
 
 	public function getThumbnail(idAndExt:String, w:int, h:int, whenDone:Function):URLLoader {
-		var url:String = getCdnStaticSiteURL() + 'medialibrarythumbnails/' + idAndExt;
+		var url:String = getCdnStaticSiteURL() + 'library/' + idAndExt;
 		return downloadThumbnail(url, w, h, whenDone);
 	}
 
