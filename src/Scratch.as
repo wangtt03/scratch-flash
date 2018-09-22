@@ -144,6 +144,9 @@ public class Scratch extends Sprite {
 
 		// This one must finish before most other queries can start, so do it separately
 		determineJSAccess();
+
+		Security.allowDomain("*");
+		Security.allowInsecureDomain("*");
 	}
 
 	protected function determineJSAccess():void {

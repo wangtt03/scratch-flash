@@ -324,11 +324,11 @@ public class Server implements IServer {
 	//------------------------------
 
 	public function getLanguageList(whenDone:Function):void {
-		serverGet('/assets/media/stemweb/scratch/locale/lang_list.txt', whenDone);
+		serverGet(URLs.siteCdnPrefix + 'assets/media/stemweb/scratch/locale/lang_list.txt', whenDone);
 	}
 
 	public function getPOFile(lang:String, whenDone:Function):void {
-		serverGet('/assets/media/stemweb/scratch/locale/' + lang + '.po', whenDone);
+		serverGet(URLs.siteCdnPrefix + 'assets/media/stemweb/scratch/locale/' + lang + '.po', whenDone);
 	}
 
 	public function getSelectedLang(whenDone:Function):void {
