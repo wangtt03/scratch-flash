@@ -532,7 +532,7 @@ public class ProjectIO {
 			whenDone(spr);
 		}
 		var spr:ScratchSprite = new ScratchSprite();
-		spr.readJSON(md5AndExt);
+		spr.readJSON(util.JSON.parse(util.JSON.stringify(md5AndExt)));
 		spr.instantiateFromJSON(app.stagePane);
 		fetchSpriteAssets([spr], assetsReceived);
 		// app.server.getAsset(md5AndExt, jsonReceived);
