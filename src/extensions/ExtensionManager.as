@@ -50,9 +50,10 @@ public class ExtensionManager {
 	private var pollInProgress:Dictionary = new Dictionary(true);
 	static public const extensionSeparator:String = '\u001F';
 	static public const extensionSeparatorLegacy:String = '.';
-	static public const picoBoardExt:String = 'PicoBoard';
-	static public const wedoExt:String = 'LEGO WeDo';
-	static public const wedo2Ext:String = 'LEGO WeDo 2.0';
+	// static public const picoBoardExt:String = 'PicoBoard';
+	// static public const wedoExt:String = 'LEGO WeDo';
+	// static public const wedo2Ext:String = 'LEGO WeDo 2.0';
+	static public const stemAIExt:String = '人工智能';
 
 	// Experimental extensions must be hosted on one of these domains
 	// These should start with '.' to avoid accepting things like 'malicious.not_github.io'
@@ -82,9 +83,10 @@ public class ExtensionManager {
 
 		// Clear imported extensions before loading a new project.
 		extensionDict = {};
-		extensionDict[picoBoardExt] = ScratchExtension.PicoBoard();
-		extensionDict[wedoExt] = ScratchExtension.WeDo();
-		extensionDict[wedo2Ext] = ScratchExtension.WeDo2();
+		// extensionDict[picoBoardExt] = ScratchExtension.PicoBoard();
+		// extensionDict[wedoExt] = ScratchExtension.WeDo();
+		// extensionDict[wedo2Ext] = ScratchExtension.WeDo2();
+		extensionDict[stemAIExt] = ScratchExtension.StemAI();
 	}
 
 	// Should the interpreter force async communication with extensions?

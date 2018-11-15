@@ -94,6 +94,7 @@ public class Server implements IServer {
 	// Returns a URL for downloading the JS for an official extension given input like 'myExtension.js'
 	public function getOfficialExtensionURL(extensionName:String):String {
 		var path:String;
+		return URLs.siteCdnPrefix + "assets/js/scratch/" + extensionName;
 
 		if (Scratch.app.isOffline) {
 			path = 'static/js/scratch_extensions/';

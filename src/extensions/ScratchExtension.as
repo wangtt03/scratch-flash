@@ -78,37 +78,48 @@ public class ScratchExtension {
 		this.port = port;
 	}
 
-	public static function PicoBoard():ScratchExtension {
-		// Return a descriptor for the Scratch PicoBoard extension.
-		var result:ScratchExtension = new ScratchExtension(ExtensionManager.picoBoardExt, 0);
-		result.isInternal = true;
-		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('picoExtension.js');
-		result.thumbnailMD5 = '82318df0f682b1de33f64da8726660dc.png';
-		result.url = 'http://wiki.scratch.mit.edu/wiki/PicoBoard_Blocks';
-		result.tags = ['hardware'];
-		return result;
-	}
+	// public static function PicoBoard():ScratchExtension {
+	// 	// Return a descriptor for the Scratch PicoBoard extension.
+	// 	var result:ScratchExtension = new ScratchExtension(ExtensionManager.picoBoardExt, 0);
+	// 	result.isInternal = true;
+	// 	result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('picoExtension.js');
+	// 	result.thumbnailMD5 = '82318df0f682b1de33f64da8726660dc.png';
+	// 	result.url = 'http://wiki.scratch.mit.edu/wiki/PicoBoard_Blocks';
+	// 	result.tags = ['hardware'];
+	// 	return result;
+	// }
 
-	public static function WeDo():ScratchExtension {
-		// Return a descriptor for the LEGO WeDo extension.
-		var result:ScratchExtension = new ScratchExtension(ExtensionManager.wedoExt, 0);
-		result.isInternal = true;
-		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('wedoExtension.js');
-		result.thumbnailMD5 = '9e5933c3b8b76596d1f889d44d3715a1.png';
-		result.url = 'http://wiki.scratch.mit.edu/wiki/LEGO_WeDo_Blocks';
-		result.tags = ['hardware'];
-		result.displayName = "LEGO WeDo 1.0";
-		return result;
-	}
+	// public static function WeDo():ScratchExtension {
+	// 	// Return a descriptor for the LEGO WeDo extension.
+	// 	var result:ScratchExtension = new ScratchExtension(ExtensionManager.wedoExt, 0);
+	// 	result.isInternal = true;
+	// 	result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('wedoExtension.js');
+	// 	result.thumbnailMD5 = '9e5933c3b8b76596d1f889d44d3715a1.png';
+	// 	result.url = 'http://wiki.scratch.mit.edu/wiki/LEGO_WeDo_Blocks';
+	// 	result.tags = ['hardware'];
+	// 	result.displayName = "LEGO WeDo 1.0";
+	// 	return result;
+	// }
 
-	public static function WeDo2():ScratchExtension {
+	// public static function WeDo2():ScratchExtension {
+	// 	// Return a descriptor for the LEGO WeDo 2.0 extension.
+	// 	var result:ScratchExtension = new ScratchExtension(ExtensionManager.wedo2Ext, 0);
+	// 	result.isInternal = true;
+	// 	result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('wedo2Extension.js');
+	// 	result.thumbnailMD5 = 'c14047e09787cd75a2bc6aba68ceb0de.png';
+	// 	result.url = 'howto/wedo2setup-intro.html';
+	// 	result.tags = ['hardware'];
+	// 	return result;
+	// }
+
+	public static function StemAI():ScratchExtension {
 		// Return a descriptor for the LEGO WeDo 2.0 extension.
-		var result:ScratchExtension = new ScratchExtension(ExtensionManager.wedo2Ext, 0);
+		var result:ScratchExtension = new ScratchExtension(ExtensionManager.stemAIExt, 0);
 		result.isInternal = true;
-		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('wedo2Extension.js');
-		result.thumbnailMD5 = 'c14047e09787cd75a2bc6aba68ceb0de.png';
+		result.javascriptURL = Scratch.app.server.getOfficialExtensionURL('stemAIExtension.js');
+		result.thumbnailMD5 = 'scratchextensionstemai.png';
 		result.url = 'howto/wedo2setup-intro.html';
-		result.tags = ['hardware'];
+		result.tags = ['ai'];
 		return result;
 	}
 }

@@ -346,6 +346,7 @@ public class DrawPropertyUI extends Sprite {
 			m.addItem('Marker');
 			m.addItem('Mystery');
 			m.addItem('Scratch');
+			m.addItem('微软雅黑');
 			m.showOnStage(Scratch.app.stage);
 		}
 		function fontSelected(fontName:String):void {

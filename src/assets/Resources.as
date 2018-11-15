@@ -74,6 +74,7 @@ public class Resources {
 	[Embed(source='fonts/MysteryQuest-Regular.ttf', fontName='Mystery', embedAsCFF = 'false', advancedAntiAliasing = 'true')] private static const Font4:Class;
 	[Embed(source='fonts/PermanentMarker.ttf', fontName='Marker', embedAsCFF = 'false', advancedAntiAliasing = 'true')] private static const Font5:Class;
 	[Embed(source='fonts/Scratch.ttf', fontName='Scratch', embedAsCFF = 'false', advancedAntiAliasing = 'true')] private static const Font6:Class;
+	[Embed(source='fonts/msyh.ttf', fontName='微软雅黑', embedAsCFF = 'false', advancedAntiAliasing = 'true')] private static const Font7:Class;
 
 	// Block Icons (2x resolution to look better when scaled)
 	[Embed(source='blocks/flagIcon.png')] private static const flagIcon:Class;

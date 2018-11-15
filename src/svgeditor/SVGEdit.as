@@ -339,14 +339,14 @@ import svgeditor.objs.*;
 			// Not really possible to get this right for all fonts/size.
 			// It's fairly close for Helvetica Bold, the default font in Scratch 1.4.
 			var tf:TextField = new TextField();
-			tf.defaultTextFormat = new TextFormat('Helvetica', targetCostume.fontSize);
+			tf.defaultTextFormat = new TextFormat('微软雅黑', targetCostume.fontSize);
 			textX += 5;
 			textY += Math.round(0.9 * tf.getLineMetrics(0).ascent);
 
 			var textEl:SVGElement = new SVGElement('text');
 			textEl.text = targetCostume.text;
-			textEl.setAttribute('font-family', 'Helvetica');
-			textEl.setAttribute('font-weight', 'bold');
+			textEl.setAttribute('font-family', '微软雅黑');
+			textEl.setAttribute('font-weight', 'normal');
 			textEl.setAttribute('font-size', targetCostume.fontSize);
 			textEl.setAttribute('stroke', SVGElement.colorToHex(targetCostume.textColor & 0xFFFFFF));
 			textEl.setAttribute('text-anchor', 'start');
