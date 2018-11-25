@@ -57,6 +57,11 @@ public class TopBarPart extends UIPart {
 
 	// protected var loadExperimentalButton:Button;
 	protected var exportButton:Button;
+	protected var saveButton:Button;
+	protected var editButton:Button;
+	protected var deleteButton:Button;
+	protected var publishButton:Button;
+	protected var backButton:Button;
 	protected var extensionLabel:TextField;
 
 	public function TopBarPart(app:Scratch) {
@@ -86,6 +91,12 @@ public class TopBarPart extends UIPart {
 			// 	addChild(loadExperimentalButton = extensionDevManager.makeLoadExperimentalExtensionButton());
 			// }
 		}
+		addChild(saveButton = new Button('保存', function():void { app.saveProjectToCloud(); }));
+		addChild(editButton = new Button('编辑', function():void { app.editStemProject(); }));
+		addChild(deleteButton = new Button('删除', function():void { app.deleteStemProject(); }));
+		addChild(publishButton = new Button('发布', function():void { app.publishStemProject(); }));
+		addChild(backButton = new Button('返回', function():void { app.backToStemweb(); }));
+
 	}
 
 	public static function strings():Array {
@@ -179,6 +190,32 @@ public class TopBarPart extends UIPart {
 			nextX = exportButton.x - 5;
 		}
 
+		if (backButton) {
+			backButton.x = nextX - backButton.width;
+			backButton.y = buttonY - 3;
+			nextX = backButton.x - 5;
+		}
+		if (publishButton) {
+			publishButton.x = nextX - publishButton.width;
+			publishButton.y = buttonY - 3;
+			nextX = publishButton.x - 5;
+		}
+		if (deleteButton) {
+			deleteButton.x = nextX - deleteButton.width;
+			deleteButton.y = buttonY - 3;
+			nextX = deleteButton.x - 5;
+		}
+		if (editButton) {
+			editButton.x = nextX - editButton.width;
+			editButton.y = buttonY - 3;
+			nextX = editButton.x - 5;
+		}
+		if (saveButton) {
+			saveButton.x = nextX - saveButton.width;
+			saveButton.y = buttonY - 3;
+			nextX = saveButton.x - 5;
+		}
+		
 		if (extensionLabel) {
 			extensionLabel.x = nextX - extensionLabel.width;
 			extensionLabel.y = h + 5;

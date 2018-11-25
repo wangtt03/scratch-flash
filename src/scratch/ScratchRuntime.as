@@ -105,6 +105,7 @@ public class ScratchRuntime {
 			if (saveAfterInstall) app.setSaveNeeded(true);
 			projectToInstall = null;
 			saveAfterInstall = false;
+			app.externalCall("ScratchProjectLoaded");
 			return;
 		}
 		if (ready==ReadyLabel.COUNTDOWN) {

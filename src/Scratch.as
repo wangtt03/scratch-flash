@@ -1239,6 +1239,26 @@ public class Scratch extends Sprite {
 		projIO.convertSqueakSounds(stagePane, squeakSoundsConverted);
 	}
 
+	public function saveProjectToCloud():void {
+		externalCall('saveProjectToCloud');
+	}
+
+	public function editStemProject():void {
+		externalCall('editStemProject');
+	}
+
+	public function deleteStemProject():void {
+		externalCall('deleteStemProject');
+	}
+
+	public function publishStemProject():void {
+		externalCall('publishStemProject');
+	}
+
+	public function backToStemweb():void {
+		externalCall('backToStemweb');
+	}
+
 	public function exportProjectToFile(fromJS:Boolean = false, saveCallback:Function = null):void {
 		function squeakSoundsConverted():void {
 			scriptsPane.saveScripts(false);
