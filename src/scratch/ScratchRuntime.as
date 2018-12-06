@@ -847,6 +847,7 @@ public class ScratchRuntime {
 		app.removeLoadProgressBox();
 		//DialogBox.notify('Error!', 'Project did not load.', app.stage);
 		app.loadProjectFailed();
+		app.externalCall("ScratchProjectLoaded");
 	}
 
 	public function decodeImagesAndInstall(newProject:ScratchStage):void {

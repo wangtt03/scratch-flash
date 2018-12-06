@@ -39,7 +39,7 @@ public class MediaLibrary extends Sprite {
 	private static const backdropCategories:Array = [
 		'All', 'Indoors', 'Outdoors', 'Other'];
 	private static const costumeCategories:Array = [
-		'All', 'Animals', 'Fantasy', 'Letters', 'People', 'Things', 'Transportation'];
+		'All', 'Animals', 'Fantasy', 'Letters', 'Things', 'Transportation', '荒岛集训营', '抽奖机', '三国演义', '曹冲称象', '荒岛训练营', '树懒喂养记', '毕业设计', '我的世界', '王牌战机', '皇家守卫军', '愤怒的小鸟', '小斗士', '魔法相框', '植物与僵尸'];
 	private static const extensionCategories:Array = [
 		'All', 'Hardware'];
 	private static const soundCategories:Array = [
@@ -49,7 +49,7 @@ public class MediaLibrary extends Sprite {
 	private static const backdropThemes:Array = [
 		'Castle', 'City', 'Flying', 'Holiday', 'Music and Dance', 'Nature', 'Space', 'Sports', 'Underwater'];
 	private static const costumeThemes:Array = [
-		'Castle', 'City', 'Dance', 'Dress-Up', 'Flying', 'Holiday', 'Music', 'Space', 'Sports', 'Underwater', 'Walking'];
+		'Castle', 'City', 'Dance', 'Dress-Up', 'Flying', 'Holiday', 'Music', 'Space', 'Sports', 'Underwater', 'Walking', '国庆节', '教师节', '端午节', '春节', '元旦', '圣诞节', '中秋节'];
 
 	private static const imageTypes:Array = ['All', 'Bitmap', 'Vector'];
 

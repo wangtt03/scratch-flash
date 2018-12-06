@@ -184,11 +184,11 @@ public class TopBarPart extends UIPart {
 		// 	// Don't upload nextX: we overlap with other items. At most one set should show at a time.
 		// }
 
-		if (exportButton) {
-			exportButton.x = nextX - exportButton.width;
-			exportButton.y = h + 5;
-			nextX = exportButton.x - 5;
-		}
+		// if (exportButton) {
+		// 	exportButton.x = nextX - exportButton.width;
+		// 	exportButton.y = h + 5;
+		// 	nextX = exportButton.x - 5;
+		// }
 
 		if (backButton) {
 			backButton.x = nextX - backButton.width;
